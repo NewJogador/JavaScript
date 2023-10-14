@@ -25,8 +25,8 @@ frm.addEventListener("submit", (e)=>{
         resp.innerText = `Tempo gasto ${tempo}`
         resp2.innerText = `Troco ${troco.toFixed(2)}`
         return
-    } else if (tempo > 120 && valor > (Math.ceil(tempo/30)*75)){
-        troco = valor - (Math.ceil(tempo/30)*75)
+    } else if (tempo > 120 && valor > (Math.ceil(tempo/30)*1)){
+        troco = valor - (Math.ceil(tempo/30)*1)
         resp.innerText = `Tempo gasto ${tempo}`
         resp2.innerText = `Troco ${troco.toFixed(2)}`
         return
