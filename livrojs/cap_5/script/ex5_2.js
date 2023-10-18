@@ -1,39 +1,24 @@
-/* 
- const bairro = prompt("Bairro de Entrega: ")
-  let taxaEntrega
-  switch (bairro) {
-    case "Centro":
-      taxaEntrega = 5.00
-      break
-    case "Fragata":
-    case "Três Vendas":
-      taxaEntrega = 7.00
-      break
-    case "Laranjal":
-      taxaEntrega = 10.00
-      break
-    default:
-      taxaEntrega = 8.00
-  }
-  alert(`Taxa R$: ${taxaEntrega.toFixed(2)}`)
+const frm = document.querySelector("form")
+const resp = document.querySelector("h3")
 
- 
+frm.addEventListener("submit", (e)=>{
+    e.preventDefault()
 
-const sexo = prompt("Qual o seu sexo?")
+    const numero = Number(frm.inValor.value)
+    let resposta = `Entre ${numero} e 1: `
+/*
+    for (let i = numero -1; i > 0; i--){
+        resposta = resposta + ", " + i
+        //será executado quantas vezes forem necessárias, ao final do for a variável está pronta
+    }
 
-  let resp
-  switch (sexo) {
-    case "Masculino":
-      resp = `Anham sei`
-      break
-    case "9 vezes por semana":
-      resp = `El Macho`
-      break
-  }
+    resp.innerText = resposta +"."*/
+    let i = numero
+    while (i > 0){
+        resposta = resposta  +i + ", "
+        i--
+    }
 
-  alert(`${resp}`)*/
-
-  
-
-
+    resp.innerText = resposta +"."
+})
 

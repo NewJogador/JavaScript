@@ -1,24 +1,23 @@
 const frm = document.querySelector("form")
-const resp = document.querySelector("#resp")
-const resp1 = document.querySelector("#resp1")
-const resp2 = document.querySelector("#resp2")
+const resp1 = document.querySelector("#outResp1")
+const resp2 = document.querySelector("#outResp2")
+
+let resposta = "" //variável para a resposta em string | iniciando
+let numContas = 0 //variável para o contador de contas | iniciando
+let valTotal = 0 //variável para o acumulador de contas | iniciando
 
 frm.addEventListener("submit", (e)=>{
     e.preventDefault()
 
-    const saque = Number(frm.inSaque.value)
+    const descricao = frm.inDescricao.value
+    const valor = Number(frm.inValor.value)
+    numContas++ //contador
+    valTotal = valTotal + valor //acumulador
+    resposta = resposta + descricao +"-R$: " +valor.toFixed(2) +"n"
+    resp1.innerTExt = `${resposta} --------------------------------`
+    resp2.innerText = `${numContas} Conta(s)- Total R$: ${valTotal.toFixed(2)}`
 
-    const num1 = Math.floor(saque/100)
-    const num2 = Math.floor((saque%100)/50)
-    const num3 = Math.floor(((saque%100)%50)/10)
-
-    if (num1 > 0){
-        resp.innerText = `Notas de R$ 100: ${num1}`
-    }
-    if (num2 > 0){
-        resp1.innerText = `Notas de R$ 50: ${num2}`
-    }
-    if (num3 > 0){
-        resp2.innerText = `Notas de R$ 10: ${num3}`
-    }
+    frm.inDescricao.value = ""
+    frm.inValor.value = ""
+    frm.inDescricao.focus()
 })

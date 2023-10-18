@@ -1,31 +1,21 @@
 const frm = document.querySelector("form")
-const resp1 = document.querySelector("#outResp1")
-const resp2 = document.querySelector("#outResp2")
-const resp3 = document.querySelector("#outResp3")
-frm.addEventListener("submit", (e) => {
-  e.preventDefault()
+const resp = document.querySelector("h3")
 
-  const saque = Number(frm.inSaque.value)
+frm.addEventListener("submit", (e)=>{
+    e.preventDefault()
 
-  if (saque % 10 != 0) {
-    alert("Valor inválido para notas disponíveis (R$ 10, 50, 100)")
-    frm.inSaque.focus()
-    return
-  }
+    const num = Number(frm.inNumero.value)
+    let numDivisores = 0 //variável para o acumulador
 
-  const notasCem = Math.floor(saque / 100)  
-  let resto = saque % 100 
-  const notasCinquenta = Math.floor(resto / 50)
-  resto = resto % 50   
-  const notasDez = Math.floor(resto / 10)
-  
-  if (notasCem > 0) {
-    resp1.innerText = `Notas de R$ 100: ${notasCem}`
-  }
-  if (notasCinquenta > 0) {
-    resp2.innerText = `Notas de R$ 50: ${notasCinquenta}`
-  }
-  if (notasDez > 0) {
-    resp3.innerText = `Notas de R$ 10: ${notasDez}`
-  }
+    for (let i=1; i<=num; i++){
+        if (num%i==0) {
+            numDivisores++ //acumulador para saber quantos divisores possui
+        }
+    }
+
+    if (numDivisores==2) {
+        resp.innerText = `${num} É primo` //2 divisores é primo
+    } else {
+        resp.innerText = `${num} Não é primo` //mais de 2 náo é primo
+    }
 })
